@@ -48,6 +48,7 @@
   DELIMITER ','
   IGNOREHEADER 1
   REGION '<enter region of Redshift>';
+  ```
 
   
 - Similarly create a schema for the fact table (which will be loaded after the pipeline is finished).
@@ -63,6 +64,7 @@
     arr_state VARCHAR(100),
     dep_delay BIGINT,
     arr_delay BIGINT
+  ```
 
   
 
