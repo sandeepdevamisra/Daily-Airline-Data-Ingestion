@@ -21,4 +21,4 @@
 - Redshift (as warehouse)
 - Step Function (for orchestration)
 ## Architecture
-![architecture](https://github.com/sandeepdevamisra/Daily-Airline-Data-Ingestion/blob/main/img/architecture.png)
+<img src="https://github.com/sandeepdevamisra/Daily-Airline-Data-Ingestion/blob/main/img/architecture.png" alt="architecture" width="50%">
