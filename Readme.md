@@ -33,25 +33,25 @@
 - S3 dir structure:
 <img src="https://github.com/sandeepdevamisra/Daily-Airline-Data-Ingestion/blob/main/img/s3_directory_structure.png" alt="architecture" width="30%">
 - In Redshift create a schema for the dimension table and load the data from dims folder of S3 bucket.
+
   ```
   create schema airlines;
-
   CREATE TABLE airlines.airports_dim (
       airport_id BIGINT,
       city VARCHAR(100),
       state VARCHAR(100),
       name VARCHAR(200)
   );
-  
   COPY airlines.airports_dim
   FROM '<enter S3 path to the file' 
   IAM_ROLE 'enter IAM role associated with Redshift'
   DELIMITER ','
   IGNOREHEADER 1
   REGION '<enter region of Redshift>';
-  ```
+
   
 - Similarly create a schema for the fact table (which will be loaded after the pipeline is finished).
+
   ```
   CREATE TABLE airlines.daily_flights_fact (
     carrier VARCHAR(10),
@@ -63,7 +63,7 @@
     arr_state VARCHAR(100),
     dep_delay BIGINT,
     arr_delay BIGINT
-   ```
+
   
 
 
