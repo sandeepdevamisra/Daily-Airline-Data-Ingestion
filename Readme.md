@@ -90,5 +90,5 @@
 <img src="https://github.com/sandeepdevamisra/Daily-Airline-Data-Ingestion/blob/main/img/glue_etl.png" alt="glue etl" width="80%">
 
 ## Step Function
-<img src="https://github.com/sandeepdevamisra/Daily-Airline-Data-Ingestion/blob/main/img/step_function.png" alt="step function" width="50%">
+<img src="https://github.com/sandeepdevamisra/Daily-Airline-Data-Ingestion/blob/main/img/step_function.png" alt="step function" width="60%">
 
