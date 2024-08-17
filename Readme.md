@@ -31,7 +31,7 @@
   - rule_outcome (part of quality check only)
   - temp (required for Redshift data ingestion)
 - S3 dir structure
-<img src="https://github.com/sandeepdevamisra/Daily-Airline-Data-Ingestion/blob/main/img/s3_directory_structure.png" alt="architecture" width="80%">
+<img src="https://github.com/sandeepdevamisra/Daily-Airline-Data-Ingestion/blob/main/img/s3_directory_structure.png" alt="architecture" width="50%">
   
 
 
