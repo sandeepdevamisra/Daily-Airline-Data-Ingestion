@@ -1,0 +1,14 @@
+{
+  "source": ["aws.s3"],
+  "detail-type": ["AWS API Call via CloudTrail"],
+  "detail": {
+    "eventSource": ["s3.amazonaws.com"],
+    "eventName": ["PutObject", "CompleteMultipartUpload"],
+    "requestParameters": {
+      "bucketName": ["airline-daily-ingestion"],
+      "key": [{
+        "suffix": "/flights.csv"
+      }]
+    }
+  }
+}

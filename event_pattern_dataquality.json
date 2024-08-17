@@ -1,0 +1,7 @@
+{
+  "source": ["aws.glue-dataquality"],
+  "detail-type": ["Data Quality Evaluation Results Available"],
+  "detail": {
+    "state": ["SUCCEEDED", "FAILED"]
+  }
+}
