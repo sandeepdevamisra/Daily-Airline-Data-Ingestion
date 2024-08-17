@@ -86,6 +86,9 @@
 - Run the command `python3 s3_file_upload.py`
 - After the command finishes executing, any new raw data will be moved to S3 bucket and a local copy will be stored in the archive folder. As soon as data lands in S3 bucket, Step Function will be triggered and after some time data will be available in Redshift. 
 
+## Glue ETL Job
+<img src="https://github.com/sandeepdevamisra/Daily-Airline-Data-Ingestion/blob/main/img/glue_etl.png" alt="glue etl" width="80%">
 
-
+## Step Function
+<img src="https://github.com/sandeepdevamisra/Daily-Airline-Data-Ingestion/blob/main/img/step_function.png" alt="step function" width="50%">
 
