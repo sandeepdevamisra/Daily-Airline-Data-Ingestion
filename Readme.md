@@ -23,6 +23,20 @@
 ## Architecture
 <img src="https://github.com/sandeepdevamisra/Daily-Airline-Data-Ingestion/blob/main/img/architecture.png" alt="architecture" width="80%">
 
+## File strucuture
+- `Daily_Airline_Data_Ingestion/`
+  - `dimension_table/`
+    - `airpors.csv`
+  - `airline_data/`
+    - `date=2024-04-06/`
+      - `flights.csv`
+  - `airline_data_archive/`
+  - `img/`
+  - `event_pattern_stepfunction.json`
+  - `event_pattern_dataquality.json`
+  - `s3_file_upload.py`
+  - `Readme.md`
+
 ## Steps
 - Create an S3 bucket and create following folders inside it:
   - dims (upload the [airport code table](https://github.com/sandeepdevamisra/Daily-Airline-Data-Ingestion/blob/main/dimension_table/airports.csv) there.
@@ -32,7 +46,7 @@
   - temp (required for Redshift data ingestion)
 - S3 dir structure:
 <img src="https://github.com/sandeepdevamisra/Daily-Airline-Data-Ingestion/blob/main/img/s3_directory_structure.png" alt="architecture" width="30%">
-- In Redshift create a schema for the dimension table and load the data from dims folder of S3 bucket.
+- In Redshift create a schema and then the the dimension table and load the data from dims folder of S3 bucket.
 
   ```
   create schema airlines;
@@ -51,7 +65,7 @@
   ```
 
   
-- Similarly create a schema for the fact table (which will be loaded after the pipeline is finished).
+- Similarly create a the fact table (which will be loaded after the pipeline is finished).
 
   ```
   CREATE TABLE airlines.daily_flights_fact (
@@ -65,8 +79,13 @@
     dep_delay BIGINT,
     arr_delay BIGINT
   ```
+- Run the Glue crawler on both the the tables. This is an one-time activity. For the incoming data in S3, we will have to run the crawler everytime, and therefore, we will automate the process using Step Function. 
+- Given that both the Glue ETL Job and Step Function are set up, to automate the entire process such that as soon as the data lands in S3 the Step Function is triggered, create a CloudTrail trail in the S3 bucket. After this, create a [Event Bridge rule](https://github.com/sandeepdevamisra/Daily-Airline-Data-Ingestion/blob/main/event_pattern_stepfunction.json) where source is S3, target is Step Function, event type is AWS API call via CloudTrail and the suffix is "/flights.csv".
+## Run instructions
+- In the local keep 2 directories, [airline_data](https://github.com/sandeepdevamisra/Daily-Airline-Data-Ingestion/tree/main/airline_data) which will contain the raw data in date partitioned way (data for 2024-04-06 should be stored in a directory with name `date=2024-04-06`) and [airline_data_archive](https://github.com/sandeepdevamisra/Daily-Airline-Data-Ingestion/tree/main/airline_data_archive) which will be initially empty but when we move the data to S3, the raw data will be stored in this directory and removed from the original directory to avoid duplicate entries in future.
+- Run the command `python3 s3_file_upload.py`
+- After the command finishes executing, any new raw data will be moved to S3 bucket and a local copy will be stored in the archive folder. As soon as data lands in S3 bucket, Step Function will be triggered and after some time data will be available in Redshift. 
 
-  
 
 
 
