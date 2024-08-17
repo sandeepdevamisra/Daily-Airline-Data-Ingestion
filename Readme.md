@@ -22,3 +22,16 @@
 - Step Function (for orchestration)
 ## Architecture
 <img src="https://github.com/sandeepdevamisra/Daily-Airline-Data-Ingestion/blob/main/img/architecture.png" alt="architecture" width="80%">
+
+## Flow
+- Create an S3 bucket and create following folders inside it:
+  - dims (upload the [airport code table](https://github.com/sandeepdevamisra/Daily-Airline-Data-Ingestion/blob/main/dimension_table/airports.csv) there.
+  - daily_raw (where daily flight data will land up there partitioned by date)
+  - bad_records (we will perform some quality check on the incoming raw date and those which fail to pass the check will land up here).
+  - rule_outcome (part of quality check only)
+  - temp (required for Redshift data ingestion)
+- S3 dir structure
+<img src="https://github.com/sandeepdevamisra/Daily-Airline-Data-Ingestion/blob/main/img/s3_directory_structure.png" alt="architecture" width="80%">
+  
+
+
