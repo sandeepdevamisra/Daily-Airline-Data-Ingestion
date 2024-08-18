@@ -100,5 +100,11 @@
 ## Step Function
 <img src="https://github.com/sandeepdevamisra/Daily-Airline-Data-Ingestion/blob/main/img/step_function.png" alt="step function" width="60%">
 
+- Add the StartCrawler followed by GetCrawler for starting the craeler on the incoming raw data present in S3.
+- While the crawler is in "RUNNING" state, wait for 10 second and again go to GetCrawler.
+- Once, crawling is completed, go to the Glue StartJobRun. This will start the Glue ETL Job. Check for task failure. If it fails in the starting, we will publish an SNS failure notification.
+- Enable to "Wait for task to complete" since Glue jobs take time.
+- Once completed, wewill check for the job status. IF it "SUCCEEDED", we will publish an SNS success notification, else a failure notification.
+  
 
 
