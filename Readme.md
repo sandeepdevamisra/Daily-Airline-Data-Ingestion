@@ -5,7 +5,7 @@
 ## Data
 - Dimension table containing airport codes (airport_id, city, state, name). Pre-load it in Redshift.
 - Daily flight data (Carrier, OriginAirportID, DestAirportID, DepDelay, ArrDelay). Will arrive daily in date-partitioned way.
-- Target fact table (Carrier, Departure Airport, Arrival, Departure city, Arrival city, Departure State, Arrival State, Departure Delay, Arrival Delay). Will achieve through the ETL job. 
+- Target fact table (Carrier, Departure Airport, Arrival Airport, Departure city, Arrival city, Departure State, Arrival State, Departure Delay, Arrival Delay). Will achieve through the ETL job. 
 - Source of data:
   - https://www.kaggle.com/datasets/tylerx/flights-and-airports-data#airports.csv (aiport codes)
   - https://www.kaggle.com/tylerx/flights-and-airports-data#raw-flight-data.csv (daily flight data)
