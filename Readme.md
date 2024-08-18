@@ -104,7 +104,14 @@
 - While the crawler is in "RUNNING" state, wait for 10 second and again go to GetCrawler.
 - Once, crawling is completed, go to the Glue StartJobRun. This will start the Glue ETL Job. Check for task failure. If it fails in the starting, we will publish an SNS failure notification.
 - Enable to "Wait for task to complete" since Glue jobs take time.
-- Once completed, wewill check for the job status. IF it "SUCCEEDED", we will publish an SNS success notification, else a failure notification.
+- Once completed, we will check for the job status. IF it "SUCCEEDED", we will publish an SNS success notification, else a failure notification.
+
+## VPC
+- Create endpoints for S3, CloudWatch monitoring, Glue with the same VPC and subnet as the Glue job.
+
+## Bug Fix
+- For ingesting data into Redshift, we need to provide a temporary S3 directory path. Here, we are using Redshift for ingesting the dimension table and the fact table. In Glue Visual ETL, there is a bug due to which the temporary path for the dimension table gets removed which result in job failure. Therefore, as a bug fix, after the entire ETL is designed, edit the script (which will remove the visual part) and manually add the temporary path for the dimension table. 
+  
   
 
 
