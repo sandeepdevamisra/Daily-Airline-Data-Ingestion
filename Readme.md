@@ -46,6 +46,7 @@
   - temp (required for Redshift data ingestion)
 - S3 dir structure:
 <img src="https://github.com/sandeepdevamisra/Daily-Airline-Data-Ingestion/blob/main/img/s3_directory_structure.png" alt="architecture" width="30%">
+
 - In Redshift create a schema and then the the dimension table and load the data from dims folder of S3 bucket.
 
   ```
